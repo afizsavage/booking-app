@@ -23,7 +23,7 @@ export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
 });
 
 export const deleteBike = createAsyncThunk('bikes/deleteBike', async (id) => {
-  const res = await fetch('', {
+  const res = await fetch(`${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -37,21 +37,26 @@ export const bikesSlice = createSlice({
   initialState,
   reducers: {
     setBikes: (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.bikes = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBikes.pending, (state) => {
+      // eslint-disable-next-line no-param-reassign
       state.isLoading = true;
     });
     builder.addCase(fetchBikes.fulfilled, (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.isLoading = false;
+      // eslint-disable-next-line no-param-reassign
       state.bikes = action.payload;
     });
     builder.addCase(addBike.fulfilled, (state, action) => {
       state.bikes.push(action.payload);
     });
     builder.addCase(deleteBike.fulfilled, (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.bikes = state.bikes.filter((car) => car.id !== action.payload);
     });
   },

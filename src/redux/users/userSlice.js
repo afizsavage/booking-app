@@ -10,11 +10,15 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     logUserIn: (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.isLoggedIn = true;
+      // eslint-disable-next-line no-param-reassign
       state.user = action.payload;
     },
     logUserOut: (state) => {
+      // eslint-disable-next-line no-param-reassign
       state.isLoggedIn = false;
+      // eslint-disable-next-line no-param-reassign
       state.user = null;
     },
   },
