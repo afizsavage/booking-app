@@ -1,8 +1,24 @@
+import { Route, Routes } from 'react-router-dom';
+import AddScooter from './components/add_scooter';
+import DeleteScooter from './components/delete_scooter';
+
+import MyReservations from './components/my_reservations';
+import Reserve from './components/reserve';
+import Scooters from './components/scooters';
+import SideBar from './components/sidebar';
+
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline">Booking APp</h1>
-    </div>
+    <main className="App">
+      <SideBar />
+      <Routes>
+        <Route exact path="/" element={<Scooters />} />
+        <Route path="/reserve" element={<Reserve />} />
+        <Route path="/reservations" element={<MyReservations />} />
+        <Route path="/add" element={<AddScooter />} />
+        <Route path="/delete" element={<DeleteScooter />} />
+      </Routes>
+    </main>
   );
 }
 
