@@ -1,5 +1,12 @@
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import {
+  TiSocialFacebook,
+  TiSocialTwitter,
+  TiSocialGooglePlus,
+  TiSocialPinterest,
+  TiSocialVimeo,
+} from 'react-icons/ti';
 
 const links = [
   { name: 'Scooters', path: '/' },
@@ -9,20 +16,32 @@ const links = [
   { name: 'Delete Scooter', path: '/delete' },
 ];
 
-const NavItem = ({ name, path }) => (
-  <li>
-    <NavLink to={path} className="link">
-      {name}
-    </NavLink>
-  </li>
-);
+const NavItem = ({ name, path }) => {
+  const location = useLocation();
+  const currentRoute = location.pathname;
+
+  return (
+    <li>
+      <NavLink
+        to={path}
+        className={
+          currentRoute === path
+            ? 'pl-2 py-2 block bg-emerald-500 w-full'
+            : 'pl-2 py-2 block w-full '
+        }
+      >
+        {name}
+      </NavLink>
+    </li>
+  );
+};
 
 const SideBar = () => (
-  <aside>
+  <aside className="flex flex-col justify-between h-screen w-1/6 absolute border-r-2 py-6">
     <div>
       {' '}
-      <span>Logo</span>
-      <ul>
+      <span className="h-28 block">Logo</span>
+      <ul className="pl-5">
         {links.map((link) => (
           <NavItem
             key={links.indexOf(link)}
@@ -31,6 +50,28 @@ const SideBar = () => (
           />
         ))}
       </ul>
+    </div>
+    <div>
+      <ul className="flex justify-center mb-3">
+        <li>
+          <TiSocialTwitter />
+        </li>
+        <li>
+          <TiSocialFacebook />
+        </li>
+        <li>
+          <TiSocialGooglePlus />
+        </li>
+        <li>
+          <TiSocialVimeo />
+        </li>
+        <li>
+          <TiSocialPinterest />
+        </li>
+      </ul>
+      {/* <span className="text-sm w-full text-center block">
+        © {new Date().getFullYear()} Booking App
+      </span> */}
     </div>
   </aside>
 );

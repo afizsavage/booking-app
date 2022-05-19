@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
+
 import AddScooter from './components/add_scooter';
 import DeleteScooter from './components/delete_scooter';
-
 import MyReservations from './components/my_reservations';
 import Reserve from './components/reserve';
 import Scooters from './components/scooters';
@@ -9,7 +9,7 @@ import SideBar from './components/sidebar';
 
 function App() {
   return (
-    <main className="App">
+    <main className="relative">
       <SideBar />
       <Routes>
         <Route exact path="/" element={<Scooters />} />
