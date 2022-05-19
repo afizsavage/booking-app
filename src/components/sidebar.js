@@ -26,8 +26,8 @@ const NavItem = ({ name, path }) => {
         to={path}
         className={
           currentRoute === path
-            ? 'pl-2 py-2 block bg-emerald-500 w-full'
-            : 'pl-2 py-2 block w-full '
+            ? 'pl-2 py-2 block bg-emerald-500 text-white w-full font-semibold'
+            : 'pl-2 py-2 block w-full font-semibold '
         }
       >
         {name}
@@ -37,10 +37,12 @@ const NavItem = ({ name, path }) => {
 };
 
 const SideBar = () => (
-  <aside className="flex flex-col justify-between h-screen w-1/6 absolute border-r-2 py-6">
+  <aside className="relative flex flex-col justify-between h-screen w-1/6 border-r-2 py-6">
     <div>
       {' '}
-      <span className="h-28 block">Logo</span>
+      <div className="flex justify-center items-center">
+        <span className="h-28 block">Logo</span>
+      </div>
       <ul className="pl-5">
         {links.map((link) => (
           <NavItem

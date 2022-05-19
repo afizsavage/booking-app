@@ -9,7 +9,7 @@ import SideBar from './components/sidebar';
 
 function App() {
   return (
-    <main className="relative">
+    <main className="relative flex">
       <SideBar />
       <Routes>
         <Route exact path="/" element={<Scooters />} />
