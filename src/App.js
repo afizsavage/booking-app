@@ -1,24 +1,30 @@
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import AddScooter from './components/add_scooter';
 import DeleteScooter from './components/delete_scooter';
+import Header from './components/header';
 import MyReservations from './components/my_reservations';
 import Reserve from './components/reserve';
 import Scooters from './components/scooters';
 import SideBar from './components/sidebar';
 
 function App() {
+  const [renderAside, setRenderAside] = useState(true);
   return (
-    <main className="relative flex">
-      <SideBar />
-      <Routes>
-        <Route exact path="/" element={<Scooters />} />
-        <Route path="/reserve" element={<Reserve />} />
-        <Route path="/reservations" element={<MyReservations />} />
-        <Route path="/add" element={<AddScooter />} />
-        <Route path="/delete" element={<DeleteScooter />} />
-      </Routes>
-    </main>
+    <div className="relative">
+      <Header renderAside={renderAside} setRenderAside={setRenderAside} />
+      <main className="flex">
+        <SideBar renderAside={renderAside} setRenderAside={setRenderAside} />
+        <Routes>
+          <Route exact path="/" element={<Scooters />} />
+          <Route path="/reserve" element={<Reserve />} />
+          <Route path="/reservations" element={<MyReservations />} />
+          <Route path="/add" element={<AddScooter />} />
+          <Route path="/delete" element={<DeleteScooter />} />
+        </Routes>
+      </main>
+    </div>
   );
 }
 
