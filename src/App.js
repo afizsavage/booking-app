@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import AddScooter from './components/add_scooter';
@@ -10,7 +10,15 @@ import Scooters from './components/scooters';
 import SideBar from './components/sidebar';
 
 function App() {
-  const [renderAside, setRenderAside] = useState(true);
+  const [renderAside, setRenderAside] = useState(false);
+  const { innerWidth } = window;
+
+  useEffect(() => {
+    if (innerWidth >= 1024) {
+      setRenderAside(true);
+    }
+  }, [innerWidth]);
+
   return (
     <div className="relative">
       <Header renderAside={renderAside} setRenderAside={setRenderAside} />
