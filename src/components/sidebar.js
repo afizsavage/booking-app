@@ -74,6 +74,7 @@ const SideBar = ({ renderAside, setRenderAside }) => (
           />
         ))}
       </ul>
+      <NavLink to="sign-up" className="py-2 bg-black px-3 border" />
     </div>
     <div>
       <ul className="flex justify-center mb-3">
@@ -81,13 +82,13 @@ const SideBar = ({ renderAside, setRenderAside }) => (
           <SocialLink icon={icon} key={icon.key} />
         ))}
       </ul>
-      <span className="text-xs font-medium w-full text-center block">
+      {/* <span className="text-xs font-medium w-full text-center block">
         ©
         {' '}
         {new Date().getFullYear()}
         {' '}
         Booking App
-      </span>
+      </span> */}
     </div>
   </aside>
 );
