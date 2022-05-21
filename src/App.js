@@ -11,6 +11,7 @@ import Reserve from './components/reserve';
 import Scooters from './components/scooters';
 import SideBar from './components/sidebar';
 import HomePage from './pages/HomePage';
+import BikeDetails from './pages/BikeDetails';
 
 function App() {
   const [renderAside, setRenderAside] = useState(false);
@@ -32,6 +33,7 @@ function App() {
             path="/"
             element={<HomePage />}
           />
+          <Route path="/bikes/:bikeId" element={<BikeDetails />} />
           <Route exact path="/" element={<Scooters />} />
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/reservations" element={<MyReservations />} />
