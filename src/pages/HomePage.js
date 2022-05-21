@@ -1,3 +1,5 @@
+import ResponsiveCarousel from '../components/Carousel';
+
 const HomePage = () => (
   <section className="w-full md:w-4/5 pt-20 md:py-20 overflow-y-auto h-screen">
     <div className="w-[98%] text-center mb-10">
@@ -8,6 +10,7 @@ const HomePage = () => (
         CHOOSE YOUR PREMIUM BIKE.
       </p>
     </div>
+    <ResponsiveCarousel />
   </section>
 );
 

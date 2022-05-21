@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const CarouselItem = ({ bike }) => {
   const {
@@ -29,7 +29,7 @@ const CarouselItem = ({ bike }) => {
 };
 
 CarouselItem.propTypes = {
-  car: PropTypes.objectOf().isRequired,
+  bike: PropTypes.objectOf().isRequired,
 };
 
 export default CarouselItem;
