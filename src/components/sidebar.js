@@ -75,6 +75,8 @@ const SideBar = ({ renderAside, setRenderAside }) => (
         ))}
       </ul>
       <NavLink to="sign-up" className="py-2 bg-black px-3 border" />
+      <NavLink to="login" className="py-2 bg-red-500 px-3 border" />
+
     </div>
     <div>
       <ul className="flex justify-center mb-3">
