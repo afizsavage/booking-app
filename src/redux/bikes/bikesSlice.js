@@ -6,13 +6,13 @@ const initialState = {
 };
 
 export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
-  const res = await fetch('');
+  const res = await fetch('https://secure-bastion-02263.herokuapp.com/api/v2/motorcyles');
   const data = await res.join();
   return data;
 });
 
 export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
-  const res = await fetch('', {
+  const res = await fetch('https://secure-bastion-02263.herokuapp.com/api/v2/motorcyles/new', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -23,7 +23,7 @@ export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
 });
 
 export const deleteBike = createAsyncThunk('bikes/deleteBike', async (id) => {
-  const res = await fetch(`${id}`, {
+  const res = await fetch(`https://secure-bastion-02263.herokuapp.com/api/v2/motorcyles/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });

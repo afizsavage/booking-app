@@ -3,6 +3,7 @@ import {
   Route, Routes,
 } from 'react-router-dom';
 
+import ProtectedRoute from './components/ProtectedRoute';
 import AddScooter from './components/add_scooter';
 import DeleteScooter from './components/delete_scooter';
 import Header from './components/header';
@@ -12,7 +13,7 @@ import Scooters from './components/scooters';
 import SideBar from './components/sidebar';
 import HomePage from './pages/HomePage';
 import BikeDetails from './pages/BikeDetails';
-import ManageCars from './pages/ManageCars';
+import ManageBikes from './pages/ManageBikes';
 
 function App() {
   const [renderAside, setRenderAside] = useState(false);
@@ -40,6 +41,14 @@ function App() {
           <Route path="/reservations" element={<MyReservations />} />
           <Route path="/add" element={<AddScooter />} />
           <Route path="/delete" element={<DeleteScooter />} />
+          <Route
+            path="/admin/manage-bikes"
+            element={(
+              <ProtectedRoute>
+                <ManageBikes />
+              </ProtectedRoute>
+            )}
+          />
         </Routes>
       </main>
     </div>
