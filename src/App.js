@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import {
+  Route, Routes,
+} from 'react-router-dom';
 
 import AddScooter from './components/add_scooter';
 import DeleteScooter from './components/delete_scooter';
@@ -8,6 +10,7 @@ import MyReservations from './components/my_reservations';
 import Reserve from './components/reserve';
 import Scooters from './components/scooters';
 import SideBar from './components/sidebar';
+import HomePage from './pages/HomePage';
 
 function App() {
   const [renderAside, setRenderAside] = useState(false);
@@ -25,6 +28,10 @@ function App() {
       <main className="flex">
         <SideBar renderAside={renderAside} setRenderAside={setRenderAside} />
         <Routes>
+          <Route
+            path="/"
+            element={<HomePage />}
+          />
           <Route exact path="/" element={<Scooters />} />
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/reservations" element={<MyReservations />} />
