@@ -12,6 +12,7 @@ import Scooters from './components/scooters';
 import SideBar from './components/sidebar';
 import HomePage from './pages/HomePage';
 import BikeDetails from './pages/BikeDetails';
+import ManageCars from './pages/ManageCars';
 
 function App() {
   const [renderAside, setRenderAside] = useState(false);
