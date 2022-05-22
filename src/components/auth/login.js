@@ -2,6 +2,9 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+// import { RootState } from '../../app/store'
+import { useDispatch } from 'react-redux';
+import { logUserIn } from '../../redux/users/userSlice';
 
 const Login = () => {
   const {
@@ -11,14 +14,26 @@ const Login = () => {
   } = useForm();
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const setToken = (token) => {
+    localStorage.setItem('token', token);
+  };
+
+  // const deleteToken = () => {
+  //   localStorage.removeItem('token');
+  // };
 
   const onSubmit = (data) => {
     axios
       .post(
-        'https://secure-bastion-02263.herokuapp.com/api/v1/users/register',
+        'https://secure-bastion-02263.herokuapp.com/api/v1/auth/login',
         data,
       )
-      .then(() => {
+      .then((res) => {
+        setToken(res.data.jwt);
+        dispatch(logUserIn(res.data.user));
+        console.log(res.data.user);
         navigate('/');
       })
       .catch((error) => {
