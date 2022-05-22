@@ -2,7 +2,6 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-// import { RootState } from '../../app/store'
 import { useDispatch } from 'react-redux';
 import { logUserIn } from '../../redux/users/userSlice';
 
@@ -20,10 +19,6 @@ const Login = () => {
     localStorage.setItem('token', token);
   };
 
-  // const deleteToken = () => {
-  //   localStorage.removeItem('token');
-  // };
-
   const onSubmit = (data) => {
     axios
       .post(
@@ -33,7 +28,6 @@ const Login = () => {
       .then((res) => {
         setToken(res.data.jwt);
         dispatch(logUserIn(res.data.user));
-        console.log(res.data.user);
         navigate('/');
       })
       .catch((error) => {

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { NavLink, useLocation } from 'react-router-dom';
 import { MdOutlineClose } from 'react-icons/md';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   TiSocialFacebook,
   TiSocialTwitter,
@@ -9,7 +9,7 @@ import {
   TiSocialPinterest,
   TiSocialVimeo,
 } from 'react-icons/ti';
-// import { useEffect } from 'react';
+import { logUserOut } from '../redux/users/userSlice';
 
 const links = [
   { name: 'Scooters', path: '/' },
@@ -51,8 +51,16 @@ const SocialLink = ({ icon }) => <li className="mx-1">{icon}</li>;
 
 const SideBar = ({ renderAside, setRenderAside }) => {
   const userState = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
-  console.log(userState);
+  const deleteToken = () => {
+    localStorage.removeItem('token');
+  };
+
+  const logout = () => {
+    deleteToken();
+    dispatch(logUserOut());
+  };
 
   return (
     <aside
@@ -81,11 +89,16 @@ const SideBar = ({ renderAside, setRenderAside }) => {
             />
           ))}
         </ul>
-        <div>
+        <div className="pl-5 mt-10">
           {userState.isLoggedIn ? (
-            <button type="button">Logout</button>
+            <button onClick={() => logout()} type="button">
+              Logout
+            </button>
           ) : (
-            <NavLink to="login" className="py-2 bg-red-500 px-3 border">
+            <NavLink
+              to="login"
+              className="py-2 bg-red-500 text-white font-semibold px-3 border"
+            >
               Login
             </NavLink>
           )}
