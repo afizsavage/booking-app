@@ -12,11 +12,11 @@ import {
 import { logUserOut } from '../redux/users/userSlice';
 
 const links = [
-  { name: 'Scooters', path: '/' },
+  { name: 'Motocycles', path: '/' },
   { name: 'Reserve', path: '/reserve' },
   { name: 'My Reservations', path: '/reservations' },
-  { name: 'Add Scooter', path: '/add' },
-  { name: 'Delete Scooter', path: '/delete' },
+  { name: 'Add Motorcycle', path: '/add' },
+  { name: 'Delete Motorcycle', path: '/delete' },
 ];
 
 const socialIcons = [
