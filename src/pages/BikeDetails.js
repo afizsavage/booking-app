@@ -5,7 +5,7 @@ const BikeDetails = () => {
   const { bikeId } = useParams();
   const [bike, setBike] = useState({});
   const fetchBike = async () => {
-    const res = await fetch(`https://secure-bastion-02263.herokuapp.com/api/v2/motorcyles/:id${bikeId}`);
+    const res = await fetch(`https://sheltered-tor-84017.herokuapp.com/api/v2/motorcyles/${bikeId}`);
     const data = await res.json();
     setBike(data);
   };
