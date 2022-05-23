@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import AddScooter from './components/add-scooter';
 import Login from './components/auth/login';
@@ -10,12 +11,19 @@ import MyReservations from './components/my-reservations';
 import Reserve from './components/reserve';
 import Scooters from './components/scooters';
 import SideBar from './components/sidebar';
+import { logUserIn } from './redux/users/userSlice';
 
 function App() {
   const location = useLocation();
   const currentRoute = location.pathname;
   const [renderAside, setRenderAside] = useState(false);
   const { innerWidth } = window;
+  const dispatch = useDispatch();
+
+  const getCurrentUser = () => {
+    const user = localStorage.getItem('user');
+    return user;
+  };
 
   useEffect(() => {
     if (
@@ -26,6 +34,11 @@ function App() {
       setRenderAside(true);
     } else {
       setRenderAside(false);
+    }
+
+    if (getCurrentUser()) {
+      const user = JSON.parse(getCurrentUser());
+      dispatch(logUserIn(user));
     }
   }, [currentRoute]);
 

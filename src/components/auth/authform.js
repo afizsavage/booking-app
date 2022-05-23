@@ -31,17 +31,17 @@ const AuthForm = ({ endpoint, button, onResponse }) => {
   };
 
   return (
-    <div className="h-screen relative w-screen flex flex-col justify-center items-center">
+    <div className="h-screen relative w-screen flex flex-col px-3 pt-20 lg:p-0 lg:justify-center items-center">
       <NavLink
         to="/"
-        className="absolute top-7 right-7 py-2 px-2 rounded-full bg-slate-300 border"
+        className="absolute top-3 right-3 lg:top-7 lg:right-7 py-2 px-2 rounded-full bg-slate-300 border"
       >
         <MdOutlineClose className="text-emerald-500 text-2xl" />
       </NavLink>
       <h2 className="mb-4 font-medium text-4xl text-grey-700">Booking App</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col w-2/6 border p-5 bg-emerald-500"
+        className="flex flex-col lg:w-2/6 border p-5 bg-emerald-500"
       >
         {currentRoute === '/sign-up' && (
           <label htmlFor="name" className="my-2 text-white font-medium">

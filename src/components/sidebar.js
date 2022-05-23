@@ -57,8 +57,13 @@ const SideBar = ({ renderAside, setRenderAside }) => {
     localStorage.removeItem('token');
   };
 
+  const removeCurrentUser = () => {
+    localStorage.removeItem('user');
+  };
+
   const logout = () => {
     deleteToken();
+    removeCurrentUser();
     dispatch(logUserOut());
   };
 
