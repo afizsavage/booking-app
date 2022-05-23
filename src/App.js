@@ -18,7 +18,11 @@ function App() {
   const { innerWidth } = window;
 
   useEffect(() => {
-    if (innerWidth >= 1024 && currentRoute !== '/sign-up') {
+    if (
+      innerWidth >= 1024
+        && currentRoute !== '/sign-up'
+        && currentRoute !== '/login'
+    ) {
       setRenderAside(true);
     } else {
       setRenderAside(false);

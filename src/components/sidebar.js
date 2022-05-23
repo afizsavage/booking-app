@@ -89,9 +89,13 @@ const SideBar = ({ renderAside, setRenderAside }) => {
             />
           ))}
         </ul>
-        <div className="pl-5 mt-10">
+        <div className=" w-full flex justify-center mt-10">
           {userState.isLoggedIn ? (
-            <button onClick={() => logout()} type="button">
+            <button
+              className="py-2 bg-red-500 text-white font-semibold px-3 border"
+              onClick={() => logout()}
+              type="button"
+            >
               Logout
             </button>
           ) : (
@@ -110,13 +114,13 @@ const SideBar = ({ renderAside, setRenderAside }) => {
             <SocialLink icon={icon} key={icon.key} />
           ))}
         </ul>
-        {/* <span className="text-xs font-medium w-full text-center block">
-        ©
-        {' '}
-        {new Date().getFullYear()}
-        {' '}
-        Booking App
-      </span> */}
+        <span className="text-xs font-medium w-full text-center block">
+          ©
+          {' '}
+          {new Date().getFullYear()}
+          {' '}
+          Booking App
+        </span>
       </div>
     </aside>
   );
