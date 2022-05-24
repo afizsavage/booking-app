@@ -1,21 +1,12 @@
 /* eslint-disable no-use-before-define */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://sheltered-tor-84017.herokuapp.com';
 
-const dispatch = useDispatch();
-
-// const initialState = {
-//   bikes: [],
-//   isLoading: false,
-// };
-
 export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
   const motor = await axios.get('/api/v2/motorcyles');
-  console.log(motor.data, 'dfdfsdfsdfsdfsdfsfs');
-  dispatch(setBikes(motor.data));
+  return motor.data;
 });
 
 export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
