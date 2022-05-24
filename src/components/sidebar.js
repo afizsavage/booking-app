@@ -13,8 +13,7 @@ const links = [
   { name: 'Scooters', path: '/' },
   { name: 'Reserve', path: '/reserve' },
   { name: 'My Reservations', path: '/reservations' },
-  { name: 'Add Scooter', path: '/add' },
-  { name: 'Delete Scooter', path: '/delete' },
+  { name: 'Manage Bikes', path: '/manage-page' },
 ];
 
 const socialIcons = [

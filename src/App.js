@@ -2,14 +2,10 @@ import { useState, useEffect } from 'react';
 import {
   Route, Routes,
 } from 'react-router-dom';
-
 import ProtectedRoute from './components/ProtectedRoute';
-import AddScooter from './components/add_scooter';
-import DeleteScooter from './components/delete_scooter';
 import Header from './components/header';
 import MyReservations from './components/my_reservations';
 import Reserve from './components/reserve';
-import Scooters from './components/scooters';
 import SideBar from './components/sidebar';
 import HomePage from './pages/HomePage';
 import BikeDetails from './pages/BikeDetails';
@@ -36,13 +32,11 @@ function App() {
             element={<HomePage />}
           />
           <Route path="/bikes/:bikeId" element={<BikeDetails />} />
-          <Route exact path="/" element={<Scooters />} />
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/reservations" element={<MyReservations />} />
-          <Route path="/add" element={<AddScooter />} />
-          <Route path="/delete" element={<DeleteScooter />} />
+          <Route path="/manage-page" element={<ManageBikes />} />
           <Route
-            path="/admin/manage-bikes"
+            path="/manage-bikes"
             element={(
               <ProtectedRoute>
                 <ManageBikes />
