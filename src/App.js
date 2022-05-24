@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {
   Route, Routes,
 } from 'react-router-dom';
-import ProtectedRoute from './components/ProtectedRoute';
+// import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/header';
 import MyReservations from './components/my_reservations';
 import Reserve from './components/reserve';
@@ -35,14 +35,6 @@ function App() {
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/reservations" element={<MyReservations />} />
           <Route path="/manage-page" element={<ManageBikes />} />
-          <Route
-            path="/manage-bikes"
-            element={(
-              <ProtectedRoute>
-                <ManageBikes />
-              </ProtectedRoute>
-            )}
-          />
         </Routes>
       </main>
     </div>

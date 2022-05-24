@@ -1,14 +1,21 @@
+/* eslint-disable no-use-before-define */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
-const initialState = {
-  bikes: [],
-  isLoading: false,
-};
+axios.defaults.baseURL = 'https://sheltered-tor-84017.herokuapp.com';
+
+const dispatch = useDispatch();
+
+// const initialState = {
+//   bikes: [],
+//   isLoading: false,
+// };
 
 export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
-  const res = await fetch('https://sheltered-tor-84017.herokuapp.com/api/v2/motorcyles');
-  const data = await res.join();
-  return data;
+  const motor = await axios.get('/api/v2/motorcyles');
+  console.log(motor.data, 'dfdfsdfsdfsdfsdfsfs');
+  dispatch(setBikes(motor.data));
 });
 
 export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
@@ -34,12 +41,15 @@ export const deleteBike = createAsyncThunk('bikes/deleteBike', async (id) => {
 
 export const bikesSlice = createSlice({
   name: 'bikes',
-  initialState,
+  initialState: {
+    bikes: [],
+  },
   reducers: {
-    setBikes: (state, action) => {
+    setBikes: (state, action) => ({
       // eslint-disable-next-line no-param-reassign
-      state.bikes = action.payload;
-    },
+      // state.bikes = action.payload;
+      ...state, bikes: action.payload,
+    }),
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBikes.pending, (state) => {
