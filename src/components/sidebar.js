@@ -10,7 +10,7 @@ import {
 } from 'react-icons/ti';
 
 const links = [
-  { name: 'Scooters', path: '/' },
+  { name: 'Models', path: '/' },
   { name: 'Reserve', path: '/reserve' },
   { name: 'My Reservations', path: '/reservations' },
   { name: 'Manage Bikes', path: '/manage-page' },
