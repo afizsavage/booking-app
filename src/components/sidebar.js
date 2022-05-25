@@ -12,7 +12,7 @@ import {
 import { logUserOut } from '../redux/users/userSlice';
 
 const links = [
-  { name: 'Models', path: '/' },
+  { name: 'Scooter', path: '/' },
   { name: 'Reserve', path: '/reserve' },
   { name: 'My Reservations', path: '/reservations' },
   { name: 'Manage Bikes', path: '/manage-page' },
