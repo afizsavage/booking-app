@@ -27,7 +27,7 @@ const socialIcons = [
   <TiSocialPinterest key={4} />,
 ];
 
-const NavItem = ({ name, path }) => {
+const NavItem = ({ name, path, style }) => {
   const location = useLocation();
   const currentRoute = location.pathname;
 
@@ -37,8 +37,8 @@ const NavItem = ({ name, path }) => {
         to={path}
         className={
           currentRoute === path
-            ? 'pl-3 py-2 block bg-emerald-500  text-white w-full font-semibold'
-            : 'pl-3 py-2 block w-full font-semibold hover:bg-white'
+            ? `${style} pl-3 py-2 block bg-emerald-500  text-white w-full font-semibold`
+            : `${style} pl-3 py-2 block w-full font-semibold hover:bg-white`
         }
       >
         {name}
@@ -91,6 +91,7 @@ const SideBar = ({ renderAside, setRenderAside }) => {
               key={links.indexOf(link)}
               name={link.name}
               path={link.path}
+              style={!userState.isLoggedIn && link.path !== '/' && link.path !== '/reserve' ? 'hidden' : ''}
             />
           ))}
         </ul>
@@ -136,6 +137,7 @@ export default SideBar;
 NavItem.propTypes = {
   name: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
+  style: PropTypes.string.isRequired,
 };
 
 SideBar.propTypes = {
