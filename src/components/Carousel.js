@@ -14,7 +14,7 @@ export const CarouselMobile = () => {
   }, []);
 
   return (
-    <section className="px-10 md:hidden">
+    <section className="md:hidden">
       <Carousel showThumbs={false} showIndicators={false} showStatus={false}>
         {bikes.bikes.map((bike) => (
           <CarouselItem key={bike.id} bike={bike} />
@@ -33,12 +33,13 @@ export const CarouselDesktop = () => {
   }, []);
 
   return (
-    <section className="py-10 hidden md:block">
+    <section className="hidden md:block">
       <Carousel
         showThumbs={false}
         showIndicators={false}
         showStatus={false}
         centerMode
+        infiniteLoop
         centerSlidePercentage={45}
       >
         {bikes.bikes.map((bike) => (

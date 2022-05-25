@@ -12,9 +12,16 @@ a.active {
   @apply bg-amber-500 text-white;
 }
 
-.carousel .control-arrow,
-.carousel.carousel-slider .control-arrow {
-  opacity: 1 !important;
+.control-arrow {
+  @apply h-16 top-1/4 w-24 bg-emerald-500 !important;
+}
+
+.control-arrow:first-of-type {
+  @apply rounded-r-full;
+}
+
+.control-next {
+  @apply rounded-l-full;
 }
 
 .carousel .control-next.control-arrow::before {
@@ -23,6 +30,14 @@ a.active {
 
 .carousel .control-prev.control-arrow::before {
   @apply border-r-black !important;
+}
+
+.slider-wrapper {
+  width: calc(100% - 12rem) !important;
+}
+
+.slide {
+  min-width: auto !important;
 }
 
 .splash-screen {
