@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-indent */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +13,7 @@ const SignUp = () => {
     setResmsg('Thanks for joining us!');
     setIsSubmitted(true);
     setTimeout(() => {
-      navigate('/');
+      navigate('/login');
     }, 4000);
   };
 
