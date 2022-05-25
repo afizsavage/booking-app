@@ -14,7 +14,7 @@ export const CarouselMobile = () => {
   }, []);
 
   return (
-    <section className="py-10 md:hidden">
+    <section className="px-10 md:hidden">
       <Carousel showThumbs={false} showIndicators={false} showStatus={false}>
         {bikes.bikes.map((bike) => (
           <CarouselItem key={bike.id} bike={bike} />

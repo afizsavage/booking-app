@@ -11,7 +11,7 @@ const CarouselItem = ({ bike }) => {
       <div className="hover:opacity-60">
         <div className="bg-amber-500 w-52 h-52 rounded-full mx-auto relative mb-10">
           <div className="absolute -left-3/4 top-1/2 translate-x-1/2 -translate-y-1/2 w-[130%]">
-            <img src={image} alt="bike" />
+            <img src={`https://sheltered-tor-84017.herokuapp.com/${image.url}`} alt="bike" />
           </div>
         </div>
         <div className="max-w-[240px] mx-auto">
