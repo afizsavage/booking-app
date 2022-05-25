@@ -1,35 +1,35 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useSelector } from 'react-redux';
-import {
+import
+extendedReservationsSlice,{
   selectAvailableScooterIds,
-  // selectAllReservation,
+  selectAllReservation,
   useGetAvailableScotersQuery,
-  // useGetReservationQuery,
-  // extendedReservationsSlice,
+  useGetReservationQuery,
 } from '../redux/reservations/reservationsSlice';
-// import store from "../redux/configureStore";
+import store from '../redux/configureStore';
 
 const Reserve = () => {
   const { isLoading, isSuccess, isError } = useGetAvailableScotersQuery();
-  // const {
-  //   isLoading: isLoadingReservation,
-  //   isSuccess: isSuccessReservation,
-  //   isError: isErrorReservation,
-  // } = useGetReservationQuery();
+  const {
+    isLoading: isLoadingReservation,
+    isSuccess: isSuccessReservation,
+    isError: isErrorReservation,
+  } = useGetReservationQuery();
 
   const orderedScootersIds = useSelector(selectAvailableScooterIds);
-  // const reservation = useSelector(selectAllReservation);
+  const reservation = useSelector(selectAllReservation);
   // const scootersStatus = useSelector(getAvailableScootersStatus);
 
   const getId = (e) => {
     e.preventDefault();
     console.log(e.target.id);
-    // store.dispatch(
-    //   extendedReservationsSlice.endpoints.getReservation.initiate({
-    //     id: e.target.id,
-    //   }),
-    // );
+    store.dispatch(
+      extendedReservationsSlice.endpoints.getReservation.initiate({
+        id: e.target.id,
+      }),
+    );
   };
 
   let content = null;
