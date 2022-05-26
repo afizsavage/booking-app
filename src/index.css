@@ -51,12 +51,12 @@ a.active {
 }
 
 .image-wrapper {
-  width: 17rem;
-  height: 17rem;
+  width: 20rem;
+  height: 20rem;
 }
 
 .i-wrap {
-  height: 17rem;
+  height: 20rem;
 }
 
 .round {
@@ -72,4 +72,16 @@ a.active {
   background-size: 200%;
   background-repeat: no-repeat;
   background-position: right;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .image-wrapper {
+    width: 17rem;
+    height: 17rem;
+  }
+
+  .i-wrap {
+    height: 17rem;
+  }
 }

@@ -70,7 +70,7 @@ const SideBar = ({ renderAside, setRenderAside }) => {
     <aside
       className={
         renderAside
-          ? 'top-0 absolute bg-slate-100 lg:relative flex flex-col justify-between h-screen w-full lg:w-1/6 border-r-2 py-6'
+          ? 'top-0 absolute bg-slate-100 lg:relative flex flex-col z-50 justify-between h-screen w-full lg:w-1/6 border-r-2 py-6'
           : 'hidden'
       }
     >
