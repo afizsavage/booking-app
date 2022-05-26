@@ -13,7 +13,7 @@ a.active {
 }
 
 .control-arrow {
-  @apply h-16 top-1/4 w-24 bg-emerald-500 !important;
+  @apply h-16 top-1/4 w-24 bg-amber-500 !important;
 }
 
 .control-arrow:first-of-type {
@@ -37,7 +37,31 @@ a.active {
 }
 
 .slide {
-  min-width: auto !important;
+  min-width: 17rem !important;
+  margin: 0 1.5rem !important;
+}
+
+.slide:first-of-type {
+  margin-left: 0 !important;
+}
+
+.slide img {
+  width: 17rem !important;
+  height: 17rem !important;
+}
+
+.image-wrapper {
+  width: 17rem;
+  height: 17rem;
+}
+
+.i-wrap {
+  height: 17rem;
+}
+
+.round {
+  height: 16rem;
+  width: 16rem;
 }
 
 .splash-screen {
