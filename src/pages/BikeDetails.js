@@ -69,13 +69,13 @@ const BikeDetails = () => {
             </div>
             <div className="w-[100%] ">
               <p className="bg-gray-200 p-2 flex justify-between">
-                <span>color:</span>
-                {bike.color}
+                <span>Price:</span>
+                {bike.price}
               </p>
             </div>
             <div>
               <Link to="/reserve">
-                <div className="flex bg-amber-500    hover:bg-amber-600/80 text-white font-bold py-1 px-4 rounded w-42">
+                <div className="flex bg-red-500    hover:bg-amber-600/80 text-white font-bold py-1 px-4 rounded w-42">
                   <BsFillGearFill className="mx-2" size={30} color="white" />
                   <button type="button" className="">
                     RESERVE
