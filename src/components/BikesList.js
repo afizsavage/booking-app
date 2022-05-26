@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteBike, fetchBikes } from '../redux/bikes/bikesSlice';
-import PrimaryButton from './PrimaryButton';
+import { fetchBikes } from '../redux/bikes/bikesSlice';
 
 const BikesList = () => {
   const { bikes } = useSelector((state) => state.bikes);
@@ -12,8 +11,6 @@ const BikesList = () => {
     dispatch(fetchBikes());
   }, []);
 
-  const handleDelete = (id) => dispatch(deleteBike(id));
-
   return (
     <section>
       <h2 className="font-bold text-3xl text-center mb-10">List of bikes</h2>
@@ -22,8 +19,8 @@ const BikesList = () => {
         <thead className="">
           <tr>
             <th className="p-2 text-left">Bike Year</th>
-            <th className="p-2 text-left">Bike model</th>
-            <th className="p-2 text-left">Action</th>
+            <th className="p-2 text-left">Bike Model</th>
+            <th className="p-2 text-left">Bike Price</th>
           </tr>
         </thead>
 
@@ -32,11 +29,7 @@ const BikesList = () => {
             <tr key={bike.id}>
               <td className="px-2 py-4">{bike.year}</td>
               <td className="px-2 py-4">{bike.model}</td>
-              <td className="px-2 py-4">
-                <PrimaryButton onClick={() => handleDelete(bike.id)}>
-                  Delete
-                </PrimaryButton>
-              </td>
+              <td className="px-2 py-4">{bike.price}</td>
             </tr>
           ))}
         </tbody>
