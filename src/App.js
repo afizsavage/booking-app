@@ -7,7 +7,7 @@ import Login from './components/auth/login';
 import SignUp from './components/auth/sign-up';
 import DeleteMotorcycle from './components/delete-motorcycle';
 import Header from './components/header';
-import MyReservations from './components/my-reservations';
+import MyReservations from './pages/MyReservations';
 import Reserve from './components/reserve';
 import SideBar from './components/sidebar';
 import HomePage from './pages/HomePage';
