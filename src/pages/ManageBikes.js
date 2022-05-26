@@ -44,12 +44,6 @@ const ManageBikes = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-start justify-center w-4/5 max-w-xl mx-auto gap-5 mb-10 md:mb-20"
       >
-        <input
-          type="text"
-          className="border-2 border-amber-500 rounded w-full p-1"
-          {...register('make', { required: true, maxLength: 50 })}
-          placeholder="Bike make"
-        />
         {errors.make && <FormError>Must fill out this field</FormError>}
         <input
           type="text"
