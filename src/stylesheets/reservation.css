@@ -166,7 +166,6 @@
   animation: shake 0.5s;
 }
 
-
 .reserve-form {
   display: flex;
   flex-direction: column;
@@ -207,7 +206,7 @@ label input {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
-.scooter-model  {
+.scooter-model {
   font-size: 1.2rem;
   font-weight: 700;
   color: rgb(141, 88, 7);
