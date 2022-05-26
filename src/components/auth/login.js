@@ -34,7 +34,7 @@ const Login = () => {
 
   return isSubmitted ? (
     <div className="w-full h-full flex justify-center items-center">
-      <h2 className="text-emerald-500 font-semibold text-2xl">{resMsg}</h2>
+      <h2 className="text-amber-500 font-semibold text-2xl">{resMsg}</h2>
     </div>
   ) : (
     <AuthForm endpoint={endpoint} button="Login" onResponse={onLogin} />

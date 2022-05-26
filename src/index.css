@@ -12,9 +12,16 @@ a.active {
   @apply bg-amber-500 text-white;
 }
 
-.carousel .control-arrow,
-.carousel.carousel-slider .control-arrow {
-  opacity: 1 !important;
+.control-arrow {
+  @apply h-16 top-1/4 w-24 bg-amber-500 !important;
+}
+
+.control-arrow:first-of-type {
+  @apply rounded-r-full;
+}
+
+.control-next {
+  @apply rounded-l-full;
 }
 
 .carousel .control-next.control-arrow::before {
@@ -25,6 +32,38 @@ a.active {
   @apply border-r-black !important;
 }
 
+.slider-wrapper {
+  width: calc(100% - 12rem) !important;
+}
+
+.slide {
+  min-width: 17rem !important;
+  margin: 0 1.5rem !important;
+}
+
+.slide:first-of-type {
+  margin-left: 0 !important;
+}
+
+.slide img {
+  width: 17rem !important;
+  height: 17rem !important;
+}
+
+.image-wrapper {
+  width: 20rem;
+  height: 20rem;
+}
+
+.i-wrap {
+  height: 20rem;
+}
+
+.round {
+  height: 16rem;
+  width: 16rem;
+}
+
 .splash-screen {
   background:
     linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
@@ -33,4 +72,16 @@ a.active {
   background-size: 200%;
   background-repeat: no-repeat;
   background-position: right;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .image-wrapper {
+    width: 17rem;
+    height: 17rem;
+  }
+
+  .i-wrap {
+    height: 17rem;
+  }
 }

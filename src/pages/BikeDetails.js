@@ -30,7 +30,7 @@ const BikeDetails = () => {
         <div className="flex flex-col  gap-[10%] items-center md:flex-row md:gap-[10%] md:items-center">
           <div className="bg-amber-500 w-80 h-80 rounded-full mx-auto relative mb-4 flex sm:flex-row justify-between items-center content-center md:bg-amber-500 md:w-[30rem] md:h-[15rem] md:rounded-full ">
             <div className="flex justify-center items-center content-center">
-              <img className="w-[100%] h-[100%] md:w-[100%] md:h-[100%]" src={`https://sheltered-tor-84017.herokuapp.com${bike.image.url}`} alt="img" />
+              <img className="w-[100%] h-[100%] md:w-[100%] md:h-[100%]" src={`https://sheltered-tor-84017.herokuapp.com/${bike.image.url}`} alt="img" />
             </div>
           </div>
           <div className="flex flex-col justify-center pl-24 items-center gap-4">
