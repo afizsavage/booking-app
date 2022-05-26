@@ -2,15 +2,15 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState /* useEffect */ } from 'react';
-import { useEffect, useSelector } from 'react-redux';
-import extendedReservationsSlice, {
+import { useSelector } from 'react-redux';
+import {
   selectAvailableScooterIds,
   selectAllReservation,
   useGetAvailableScotersQuery,
   useGetReservationQuery,
 } from '../redux/reservations/reservationsSlice';
 import '../stylesheets/reservation.css';
-import store from '../redux/configureStore';
+// import store from '../redux/configureStore';
 import addNewReservation from '../services/addReservationApi';
 
 const Reserve = () => {
@@ -88,10 +88,10 @@ const Reserve = () => {
     addNewReservation(getFormData());
   };
 
-  const saveScooterId = (e) => {
-    e.preventDefault();
-    console.log(e.target.id);
-  };
+  // const saveScooterId = (e) => {
+  //   e.preventDefault();
+  //   console.log(e.target.id);
+  // };
 
   if (isLoadingReservation) {
     chosenScooter = <p>Loading...</p>;
