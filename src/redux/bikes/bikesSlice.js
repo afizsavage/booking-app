@@ -2,6 +2,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const token = localStorage.getItem('token');
+
 axios.defaults.baseURL = 'https://sheltered-tor-84017.herokuapp.com';
 
 export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
@@ -12,7 +14,7 @@ export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
 export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
   const res = await fetch('https://sheltered-tor-84017.herokuapp.com/api/v2/motorcyles/new', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { Authorization: `Bearer ${token}` },
     body: JSON.stringify(body),
   });
   const data = await res.json();
