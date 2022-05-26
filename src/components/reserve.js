@@ -11,6 +11,7 @@ import extendedReservationsSlice, {
 } from '../redux/reservations/reservationsSlice';
 import '../stylesheets/reservation.css';
 import store from '../redux/configureStore';
+import addNewReservation from '../services/addReservationApi';
 
 const Reserve = () => {
   // const id = '2';
@@ -20,7 +21,7 @@ const Reserve = () => {
     isLoading: isLoadingReservation,
     isSuccess: isSuccessReservation,
     isError: isErrorReservation,
-  } = useGetReservationQuery(1);
+  } = useGetReservationQuery(2);
 
   const orderedScootersIds = useSelector(selectAvailableScooterIds);
   const reservation = useSelector(selectAllReservation);
@@ -33,7 +34,10 @@ const Reserve = () => {
     useGetReservationQuery(e.target.id);
   };
 
+  let chosenScooter;
+
   const [city, setCity] = useState(null);
+  // const [scooterId, setScooterId] = useState(chosenScooter.id);
   // const [selectedScooter, setSelectedScooter] = useState(null);
   const currentUser = JSON.parse(localStorage.getItem('user'));
 
@@ -62,7 +66,32 @@ const Reserve = () => {
     ));
   }
 
-  let chosenScooter;
+  const getFormData = () => {
+    const duration = document.getElementById('duration').value;
+    const price = document.getElementById('price').value;
+    const date = document.getElementById('date').value;
+    const city = document.getElementById('city').value;
+
+    return {
+      duration: Number(duration),
+      price: Number(price),
+      date,
+      city,
+      motorcycle_id: chosenScooter.id,
+    };
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    getFormData();
+    addNewReservation(getFormData());
+  };
+
+  const saveScooterId = (e) => {
+    e.preventDefault();
+    console.log(e.target.id);
+  };
 
   if (isLoadingReservation) {
     chosenScooter = <p>Loading...</p>;
@@ -116,6 +145,7 @@ const Reserve = () => {
                       className="reserve-form-input"
                       type="text"
                       name="name"
+                      id="name"
                       value={currentUser.name}
                       placeholder="Name"
                       onChange={read}
@@ -129,6 +159,7 @@ const Reserve = () => {
                       className="reserve-form-input"
                       type="text"
                       name="duration"
+                      id="duration"
                       placeholder="Duration"
                       onChange={read}
                     />
@@ -141,6 +172,7 @@ const Reserve = () => {
                       className="reserve-form-input"
                       type="text"
                       name="city"
+                      id="city"
                       placeholder="City"
                       onChange={getCity}
                     />
@@ -153,7 +185,21 @@ const Reserve = () => {
                       className="reserve-form-input"
                       type="text"
                       name="price"
+                      id="price"
                       placeholder="Price"
+                      onChange={read}
+                    />
+                  </label>
+                  <label className="reserve-form-label">
+                    <span className="reserve-form-label-text">
+                      {/* date */}
+                    </span>
+                    <input
+                      className="reserve-form-input"
+                      type="date"
+                      name="date"
+                      id="date"
+                      placeholder="Date"
                       onChange={read}
                     />
                   </label>
@@ -190,7 +236,7 @@ const Reserve = () => {
                     {content}
                   </div>
                 )}
-                <button type="button" className="reserve-action-button">
+                <button type="button" className="reserve-action-button" onClick={onSubmit}>
                   {chosenScooter.available ? 'Reserve scooter' : 'Scooter reserved'}
                 </button>
               </div>
