@@ -31,16 +31,11 @@ const extendedReservationsSlice = reservationsApi.injectEndpoints({
       // add providesTags when needed
     }),
     getReservation: builder.query({
-      query: (motorcycle_id) => `/reserve_motorcycle/${motorcycle_id}`, // change endpoint to scooters when database is updated
-      transformResponse: (responseData) => {
-        const loadedScooter = responseData.map((scooter) => {
-          if (!scooter?.country) scooter.country = 'N/A';
-          if (!scooter?.make) scooter.make = 'N/A';
+      query: (id) => `/motorcyles/${id}`, // change endpoint to scooters when database is updated
+      return: (responseData) => {
+        const loadedScooter = responseData;
 
-          return scooter;
-        });
-
-        return reservationsAdapter.setAll(
+        return reservationsAdapter.upsertOne(
           initialState,
           loadedScooter,
         ); /* normalize data
