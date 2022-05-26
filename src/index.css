@@ -17,6 +17,10 @@ a.active {
   opacity: 1 !important;
 }
 
+.mobile {
+  width: 100%;
+}
+
 .carousel .control-next.control-arrow::before {
   @apply border-l-black !important;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../index.css';
 import { BsFillGearFill, BsArrowRightCircle } from 'react-icons/bs';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -28,14 +29,14 @@ const BikeDetails = () => {
     <div className="flex flex-col gap-[30%] p-0 items-stretch justify-center md:w-4/5">
       <div key={bike.id} className="flex flex-col gap-[30%]">
         <div className="flex flex-col  gap-[10%] items-center md:flex-row md:gap-[10%] md:items-center">
-          <div className="bg-amber-500 w-80 h-80 rounded-full mx-auto relative mb-4 flex sm:flex-row justify-between items-center content-center md:bg-amber-500 md:w-[30rem] md:h-[15rem] md:rounded-full ">
+          <div className="w-80 h-80 rounded-full mx-auto relative mb-4 flex sm:flex-row justify-between items-center content-center md:w-[30rem] md:h-[15rem] md:rounded-full ">
             <div className="flex justify-center items-center content-center">
-              <img className="w-[100%] h-[100%] md:w-[100%] md:h-[100%]" src={`https://sheltered-tor-84017.herokuapp.com${bike.image.url}`} alt="img" />
+              <img className="image-mobile w-[100%] h-[100%] md:w-[100%] md:h-[100%] sm:w-[100%] sm:h-[100%]" src={`https://sheltered-tor-84017.herokuapp.com${bike.image.url}`} alt="img" />
             </div>
           </div>
-          <div className="flex flex-col justify-center pl-24 items-center gap-4">
-            <div className="flex  justify-center  w-full">
-              <h1 className="font-semibold pr-10 text-2xl">
+          <div className="flex mobile flex-col justify-center sm:pl-0 items-center gap-4">
+            <div className="flex justify-center w-full">
+              <h1 className="font-semibold text-2xl">
                 {' '}
                 <span>
                   {' '}
@@ -49,7 +50,7 @@ const BikeDetails = () => {
                 {' '}
               </h1>
             </div>
-            <p className="w-[100%] ">
+            <p className="flex justify-center items-center w-[100%] ">
               {' '}
               {bike.description}
               {' '}
