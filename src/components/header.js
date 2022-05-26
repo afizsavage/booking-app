@@ -11,7 +11,7 @@ const Header = ({ setRenderAside }) => {
       className={
         currentRoute === '/login' || currentRoute === '/sign-up'
           ? 'hidden'
-          : 'flex justify-between lg:hidden px-2 py-2 border-b-2'
+          : 'flex justify-between z-50 lg:hidden px-2 py-2 border-b-2'
       }
     >
       <button
