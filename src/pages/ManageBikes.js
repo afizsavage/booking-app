@@ -48,33 +48,40 @@ const ManageBikes = () => {
         <input
           type="text"
           className="border-2 border-amber-500 rounded w-full p-1"
-          placeholder="Bike model"
+          placeholder="Scooter model"
           {...register('model', { required: true, maxLength: 50 })}
         />
         {errors.model && <FormError>Must fill out this field</FormError>}
         <input
-          type="number"
+          type="text"
           className="border-2 border-amber-500 rounded w-full p-1"
-          placeholder="Bike year"
+          placeholder="Scooter name"
+          {...register('title', { required: true, maxLength: 50 })}
+        />
+        {errors.title && <FormError>Must fill out this field</FormError>}
+        <input
+          type="text"
+          className="border-2 border-amber-500 rounded w-full p-1"
+          placeholder="Scooter color"
+          {...register('color', { required: true, maxLength: 50 })}
+        />
+        {errors.color && <FormError>Must fill out this field</FormError>}
+        <input
+          type="text"
+          className="border-2 border-amber-500 rounded w-full p-1"
+          placeholder="Scooter year"
           {...register('year', { required: true, min: 1000, max: 3000 })}
         />
         {errors.year && <FormError>{errors.year?.type}</FormError>}
         <input
-          type="number"
+          type="file"
           className="border-2 border-amber-500 rounded w-full p-1"
-          placeholder="Bike price"
-          {...register('price', { required: true, min: 1 })}
-        />
-        {errors.price && <FormError>{errors.price?.type}</FormError>}
-        <input
-          type="text"
-          className="border-2 border-amber-500 rounded w-full p-1"
-          placeholder="Bike image link"
+          placeholder="Scooter image link"
           {...register('image', { required: true })}
         />
         {errors.image && <FormError>This field is required</FormError>}
         <textarea
-          placeholder="Bike description"
+          placeholder="Scooter description"
           className="border-2 border-amber-500 rounded w-full p-1"
           {...register('description', { required: true })}
           rows="8"

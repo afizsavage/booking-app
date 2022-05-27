@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import qs from 'qs';
 
 const token = localStorage.getItem('token');
 
@@ -12,14 +13,28 @@ export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
 });
 
 export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
-  const res = await fetch('https://sheltered-tor-84017.herokuapp.com/api/v2/motorcyles/new', {
+  const restructured = {
+    description: body.bike.description,
+    color: body.bike.color,
+    title: body.bike.title,
+    image: body.bike.image[0].name,
+    model: body.bike.model,
+    year: Number(body.bike.year),
+  };
+
+  console.log('I am restructured', restructured);
+  console.log('I am body', body);
+
+  const options = {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
-    body: JSON.stringify(body),
-  });
-  const data = await res.json();
+    url: '/api/v2/motorcyles/new',
+    data: qs.stringify(restructured),
+  };
 
-  return data;
+  const response = await axios(options);
+  console.log(response.data);
+  return response.data;
 });
 
 export const deleteBike = createAsyncThunk('bikes/deleteBike', async (id) => {
