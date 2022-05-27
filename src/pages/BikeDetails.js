@@ -74,7 +74,7 @@ const BikeDetails = () => {
               </p>
             </div>
             <div>
-              <Link to="/reserve">
+              <Link to={`/reserve/${bike.id}`}>
                 <div className="flex bg-red-500    hover:bg-amber-600/80 text-white font-bold py-1 px-4 rounded w-42">
                   <BsFillGearFill className="mx-2" size={30} color="white" />
                   <button type="button" className="">
