@@ -56,7 +56,7 @@ function App() {
             element={<HomePage />}
           />
           <Route path="/bikes/:bikeId" element={<BikeDetails />} />
-          <Route path="/reserve" element={<Reserve />} />
+          <Route path="/reserve/:id" element={<Reserve />} />
           <Route path="/reservations" element={<MyReservations />} />
           <Route path="/manage-page" element={<ManageBikes />} />
           <Route exact path="/" element={<Motorcycles />} />

@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState /* useEffect */ } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
   selectAvailableScooterIds,
   selectAllReservation,
@@ -14,6 +15,7 @@ import '../stylesheets/reservation.css';
 import addNewReservation from '../services/addReservationApi';
 
 const Reserve = () => {
+  const { id } = useParams();
   // const id = '2';
   const { isLoading, isSuccess, isError } = useGetAvailableScotersQuery();
   const {
@@ -21,7 +23,7 @@ const Reserve = () => {
     isLoading: isLoadingReservation,
     isSuccess: isSuccessReservation,
     isError: isErrorReservation,
-  } = useGetReservationQuery(2);
+  } = useGetReservationQuery(id);
 
   const orderedScootersIds = useSelector(selectAvailableScooterIds);
   const reservation = useSelector(selectAllReservation);
@@ -207,7 +209,7 @@ const Reserve = () => {
 
               </div>
               <div className="reserve-content-body">
-                {chosenScooter !== null ? (
+                {Object.prototype.hasOwnProperty.call(chosenScooter, 'id') ? (
                   <div className="reserve-scooter-selected">
                     <h2>Selected Scooter</h2>
                     {/* <p> */}
