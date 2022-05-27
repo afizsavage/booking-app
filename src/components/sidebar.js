@@ -15,7 +15,7 @@ const links = [
   { name: 'Scooter', path: '/' },
   { name: 'Reserve', path: '/reserve' },
   { name: 'My Reservations', path: '/reservations' },
-  { name: 'Manage Bikes', path: '/manage-page' },
+  { name: 'Add Scooter', path: '/manage-page' },
 ];
 
 const socialIcons = [
@@ -94,7 +94,7 @@ const SideBar = ({ renderAside, setRenderAside }) => {
             />
           ))}
         </ul>
-        <div className=" w-full flex justify-center mt-10">
+        <div className=" hidden  w-full lg:flex justify-center mt-10">
           {userState.isLoggedIn ? (
             <button
               className="py-2 bg-red-500 text-white font-semibold px-3 border"

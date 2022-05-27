@@ -1,10 +1,29 @@
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FcMenu } from 'react-icons/fc';
-import { useLocation } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
+import { logUserOut } from '../redux/users/userSlice';
 
 const Header = ({ setRenderAside }) => {
   const location = useLocation();
   const currentRoute = location.pathname;
+  const userState = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  const deleteToken = () => {
+    localStorage.removeItem('token');
+  };
+
+  const removeCurrentUser = () => {
+    localStorage.removeItem('user');
+  };
+
+  const logout = () => {
+    deleteToken();
+    removeCurrentUser();
+    dispatch(logUserOut());
+  };
 
   return (
     <header
@@ -23,9 +42,20 @@ const Header = ({ setRenderAside }) => {
         <FcMenu className="text-xl text-gray-700" />
       </button>
       <span className="block">Logo</span>
-      <div>
-        {' '}
-        <a href="/">Login</a>
+      <div className="">
+        {userState.isLoggedIn ? (
+          <button
+            className="py-2  text-amber-500 font-medium"
+            onClick={() => logout()}
+            type="button"
+          >
+            Logout
+          </button>
+        ) : (
+          <NavLink to="login" className="py-2 text-amber-500 font-medium">
+            Login
+          </NavLink>
+        )}
       </div>
     </header>
   );

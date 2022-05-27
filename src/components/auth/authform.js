@@ -26,6 +26,7 @@ const AuthForm = ({ endpoint, button, onResponse }) => {
         onResponse(res);
       })
       .catch((error) => {
+        // eslint-disable-next-line
         console.log(error);
       });
   };

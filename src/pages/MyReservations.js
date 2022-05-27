@@ -22,8 +22,8 @@ const MyReservations = () => {
       .get('https://sheltered-tor-84017.herokuapp.com/api/v2/my_reservations', {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((resp) => {
-        console.log(resp.data);
+      .then((res) => {
+        console.log(res.data);
       });
   });
 

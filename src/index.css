@@ -24,6 +24,10 @@ a.active {
   @apply rounded-l-full;
 }
 
+.mobile {
+  width: 100%;
+}
+
 .carousel .control-next.control-arrow::before {
   @apply border-l-black !important;
 }
