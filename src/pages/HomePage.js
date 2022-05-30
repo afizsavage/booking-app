@@ -8,7 +8,7 @@ const HomePage = () => (
           Latest Models
         </h1>
         <p className="font-semibold text-xs lg:text-sm text-gray-500">
-          Please select a motorcyle!
+          Please select a scooter!
         </p>
       </div>
       <ResponsiveCarousel />

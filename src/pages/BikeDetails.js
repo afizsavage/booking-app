@@ -13,7 +13,7 @@ const BikeDetails = () => {
   const [bike, setBike] = useState({});
   const [loading, setLoading] = useState(true);
   const fetchBike = async () => {
-    const res = await axios.get(`https://sheltered-tor-84017.herokuapp.com/api/v2/motorcyles/${bikeId}`);
+    const res = await axios.get(`https://sheltered-tor-84017.herokuapp.com/api/v2/scooters/${bikeId}`);
     setBike(res.data);
     setLoading(false);
   };

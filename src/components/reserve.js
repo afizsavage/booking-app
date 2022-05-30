@@ -198,10 +198,10 @@ const Reserve = () => {
                     </span>
                     <input
                       className="reserve-form-input"
-                      type="date"
+                      type="text"
                       name="date"
                       id="date"
-                      placeholder="Date"
+                      placeholder="dd/mm/yyyy"
                       onChange={read}
                     />
                   </label>
