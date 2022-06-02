@@ -1,10 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-axios.defaults.baseURL = 'https://sheltered-tor-84017.herokuapp.com/api/v2';
-
 const token = localStorage.getItem('token');
-console.log('Toooken', token);
 
 const addNewScooter = async (object) => {
   console.log(object);
@@ -12,7 +9,7 @@ const addNewScooter = async (object) => {
   const options = {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
-    url: '/motorcyles/new',
+    url: 'https://sheltered-tor-84017.herokuapp.com/api/v2/scooters/new',
     data: qs.stringify(object),
   };
 

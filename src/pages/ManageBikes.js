@@ -30,7 +30,7 @@ const ManageBikes = () => {
   return (
     <section className="w-full md:w-4/5 pt-20 md:py-20 overflow-y-auto h-screen">
       <h1 className="font-bold text-2xl md:text-5xl text-center uppercase mb-10">
-        Manage bikes
+        Manage Scooters
       </h1>
       <p
         className={`text-green-600 text-center my-2 opacity-0 transition-opacity ${
@@ -75,6 +75,7 @@ const ManageBikes = () => {
         {errors.year && <FormError>{errors.year?.type}</FormError>}
         <input
           type="file"
+          accept = "image/*"
           className="border-2 border-amber-500 rounded w-full p-1"
           placeholder="Scooter image link"
           {...register('image', { required: true })}
@@ -87,7 +88,7 @@ const ManageBikes = () => {
           rows="8"
         />
         {errors.description && <FormError>Must fill out this field</FormError>}
-        <PrimaryButton btnType="submit">add bike</PrimaryButton>
+        <PrimaryButton btnType="submit">add scooter</PrimaryButton>
       </form>
       <BikesList />
     </section>

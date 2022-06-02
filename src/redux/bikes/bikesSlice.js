@@ -5,10 +5,10 @@ import qs from 'qs';
 
 const token = localStorage.getItem('token');
 
-axios.defaults.baseURL = 'https://sheltered-tor-84017.herokuapp.com';
+// axios.defaults.baseURL = 'https://sheltered-tor-84017.herokuapp.com';
 
 export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
-  const motor = await axios.get('/api/v2/scooters');
+  const motor = await axios.get('https://sheltered-tor-84017.herokuapp.com/api/v2/scooters');
   return motor.data;
 });
 
@@ -28,11 +28,12 @@ export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
   const options = {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
-    url: '/api/v2/scooters/new',
+    url: 'https://sheltered-tor-84017.herokuapp.com/api/v2/scooters/new',
     data: qs.stringify(restructured),
   };
 
   const response = await axios(options);
+  console.log(response);
   console.log(response.data);
   return response.data;
 });
