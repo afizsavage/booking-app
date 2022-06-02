@@ -75,7 +75,7 @@ const ManageBikes = () => {
         {errors.year && <FormError>{errors.year?.type}</FormError>}
         <input
           type="file"
-          accept = "image/*"
+          accept="image/*"
           className="border-2 border-amber-500 rounded w-full p-1"
           placeholder="Scooter image link"
           {...register('image', { required: true })}

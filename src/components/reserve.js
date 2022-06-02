@@ -1,20 +1,34 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState /* useEffect */ } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import {
+import extendedReservationsSlice, {
   selectAvailableScooterIds,
   selectAllReservation,
   useGetAvailableScotersQuery,
   useGetReservationQuery,
 } from '../redux/reservations/reservationsSlice';
 import '../stylesheets/reservation.css';
+import store from '../redux/configureStore';
 import addNewReservation from '../services/addReservationApi';
 
 const Reserve = () => {
-  const { id } = useParams();
+  let { id } = useParams();
+  const [scooterId, setScooterId] = useState('');
+  const scooters = useSelector((state) => state.bikes.bikes);
+  console.log('Staaaate', scooters);
+
+  useEffect(() => {
+    // Get scooter from store
+
+    
+    // find scooter with id through scooters array with indexOf
+    const scooter = scooters.find((scooter) => scooter.id === Number(scooterId));
+    console.log('scooooter', scooter);
+  }, [scooterId]);
+  // const id = '2';
   const { isLoading, isSuccess, isError } = useGetAvailableScotersQuery();
   const {
     data: selectedScooter,
@@ -31,7 +45,10 @@ const Reserve = () => {
   const getId = (e) => {
     e.preventDefault();
     console.log(e.target.id);
-    useGetReservationQuery(e.target.id);
+    // id = e.target.id;
+    setScooterId(e.target.id);
+    console.log('iiiid', id);
+    // useGetReservationQuery(e.target.id);
   };
 
   let chosenScooter;
@@ -101,6 +118,13 @@ const Reserve = () => {
   }
   if (isSuccessReservation) {
     chosenScooter = selectedScooter;
+    // chosenScooter =
+    // chosenScooter = ids.map((id) => (
+    //   <p key={id}>
+    //     {entities[id].make}
+    //     {entities[id].model}
+    //   </p>
+    // ));
   }
 
   console.log('chosenScooter', chosenScooter);
@@ -167,6 +191,7 @@ const Reserve = () => {
                       name="city"
                       id="city"
                       placeholder="City"
+                      value={city}
                       onChange={getCity}
                     />
                   </label>
