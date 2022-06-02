@@ -11,12 +11,10 @@ import {
   useGetReservationQuery,
 } from '../redux/reservations/reservationsSlice';
 import '../stylesheets/reservation.css';
-// import store from '../redux/configureStore';
 import addNewReservation from '../services/addReservationApi';
 
 const Reserve = () => {
   const { id } = useParams();
-  // const id = '2';
   const { isLoading, isSuccess, isError } = useGetAvailableScotersQuery();
   const {
     data: selectedScooter,
@@ -103,13 +101,6 @@ const Reserve = () => {
   }
   if (isSuccessReservation) {
     chosenScooter = selectedScooter;
-    // chosenScooter =
-    // chosenScooter = ids.map((id) => (
-    //   <p key={id}>
-    //     {entities[id].make}
-    //     {entities[id].model}
-    //   </p>
-    // ));
   }
 
   console.log('chosenScooter', chosenScooter);
