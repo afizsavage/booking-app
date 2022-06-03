@@ -20,6 +20,23 @@ const MyReservations = () => {
       });
   }, []);
 
+  const cancelReservation = (e) => {
+    e.preventDefault();
+    const [id] = e.target.id.split('-');
+    console.log('oooooooooh', id);
+    axios
+      .delete(`https://sheltered-tor-84017.herokuapp.com/api/v2/reservations/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+        data: {
+          motorcycle_id: id,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        window.location.reload();
+      });
+  };
+
   return (
     <div className="w-full h-full pt-5 lg:pt-10">
       <div className="mb-5 lg:mb-14">
@@ -42,7 +59,7 @@ const MyReservations = () => {
                   <span className="block font-medium">{`City: ${reservation.city}`}</span>
                   <span className="block ont-medium">{`Date: ${reservation.date}`}</span>
                 </div>
-                <button className="w-full py-1 bg-amber-500" type="button">
+                <button className="w-full py-1 bg-amber-500" type="button" id={reservation.id} onClick={cancelReservation}>
                   Cancel
                 </button>
               </div>
