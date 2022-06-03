@@ -4,31 +4,20 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import extendedReservationsSlice, {
+import {
   selectAvailableScooterIds,
-  selectAllReservation,
   useGetAvailableScotersQuery,
   useGetReservationQuery,
 } from '../redux/reservations/reservationsSlice';
 import '../stylesheets/reservation.css';
-import store from '../redux/configureStore';
 import addNewReservation from '../services/addReservationApi';
 
 const Reserve = () => {
-  let { id } = useParams();
+  const { id } = useParams();
   const [scooterId, setScooterId] = useState('');
-  const scooters = useSelector((state) => state.bikes.bikes);
-  console.log('Staaaate', scooters);
 
   useEffect(() => {
-    // Get scooter from store
-
-    
-    // find scooter with id through scooters array with indexOf
-    const scooter = scooters.find((scooter) => scooter.id === Number(scooterId));
-    console.log('scooooter', scooter);
   }, [scooterId]);
-  // const id = '2';
   const { isLoading, isSuccess, isError } = useGetAvailableScotersQuery();
   const {
     data: selectedScooter,
@@ -38,24 +27,15 @@ const Reserve = () => {
   } = useGetReservationQuery(id);
 
   const orderedScootersIds = useSelector(selectAvailableScooterIds);
-  const reservation = useSelector(selectAllReservation);
-  console.log('heeeey', reservation);
-  // const scootersStatus = useSelector(getAvailableScootersStatus);
 
   const getId = (e) => {
     e.preventDefault();
-    console.log(e.target.id);
-    // id = e.target.id;
     setScooterId(e.target.id);
-    console.log('iiiid', id);
-    // useGetReservationQuery(e.target.id);
   };
 
   let chosenScooter;
 
   const [city, setCity] = useState(null);
-  // const [scooterId, setScooterId] = useState(chosenScooter.id);
-  // const [selectedScooter, setSelectedScooter] = useState(null);
   const currentUser = JSON.parse(localStorage.getItem('user'));
 
   const getCity = (e) => {
@@ -65,7 +45,6 @@ const Reserve = () => {
 
   const read = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
   };
 
   let content = null;
@@ -105,11 +84,6 @@ const Reserve = () => {
     addNewReservation(getFormData());
   };
 
-  // const saveScooterId = (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.id);
-  // };
-
   if (isLoadingReservation) {
     chosenScooter = <p>Loading...</p>;
   }
@@ -118,16 +92,7 @@ const Reserve = () => {
   }
   if (isSuccessReservation) {
     chosenScooter = selectedScooter;
-    // chosenScooter =
-    // chosenScooter = ids.map((id) => (
-    //   <p key={id}>
-    //     {entities[id].make}
-    //     {entities[id].model}
-    //   </p>
-    // ));
   }
-
-  console.log('chosenScooter', chosenScooter);
 
   return (
     <div className="reserve-wrapper">
@@ -151,7 +116,6 @@ const Reserve = () => {
           { city ? (
             <div className="reserve-scooter-container">
               <div className="reserve-content-header">
-                {/* Input name */}
                 {/* form */}
                 <form className="reserve-form">
                   <label className="reserve-form-label">
@@ -217,7 +181,6 @@ const Reserve = () => {
                       type="dateTime-local"
                       name="date"
                       id="date"
-                      // placeholder="dd/mm/yyyy"
                       onChange={read}
                     />
                   </label>
@@ -228,7 +191,6 @@ const Reserve = () => {
                 {Object.prototype.hasOwnProperty.call(chosenScooter, 'id') ? (
                   <div className="reserve-scooter-selected">
                     <h2>Selected Scooter</h2>
-                    {/* <p> */}
                     {chosenScooter !== null ? (
                       <div className="reserve-scooter-selected-content">
                         <img
@@ -246,7 +208,6 @@ const Reserve = () => {
                     ) : (
                       <p>No scooter selected</p>
                     )}
-                    {/* </p> */}
                   </div>
                 ) : (
                   <div className="reserve-scooter-list">
