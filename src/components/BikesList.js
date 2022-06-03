@@ -16,7 +16,6 @@ const BikesList = () => {
     e.preventDefault();
     const [id] = e.target.parentNode.id.split('-');
     dispatch(deleteBike(id));
-    window.location.reload();
   };
 
   return (
