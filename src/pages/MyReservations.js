@@ -1,21 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const MyReservations = () => {
-  //   const [reservations, setReservations] = useState([]);
+    const [reservations, setReservations] = useState([]);
 
   const token = localStorage.getItem('token');
 
-  const reservations = [
-    { itemName: 'Vespa 876', date: '20-07-2022', city: 'Rome' },
-    { itemName: 'Vespa 876', date: '20-07-2022', city: 'Rome' },
-    { itemName: 'Vespa 876', date: '20-07-2022', city: 'Rome' },
-    { itemName: 'Vespa 876', date: '20-07-2022', city: 'Rome' },
-    { itemName: 'Vespa 876', date: '20-07-2022', city: 'Rome' },
-    { itemName: 'Vespa 876', date: '20-07-2022', city: 'Rome' },
-    { itemName: 'Vespa 876', date: '20-07-2022', city: 'Rome' },
-    { itemName: 'Vespa 876', date: '20-07-2022', city: 'Rome' },
-  ];
+  // let reservations;
 
   useEffect(() => {
     axios
@@ -23,9 +14,11 @@ const MyReservations = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res.data);
+        // reservations = res.data;
+        setReservations(res.data);
+        console.log(reservations);
       });
-  });
+  }, []);
 
   return (
     <div className="w-full h-full pt-5 lg:pt-10">
@@ -36,14 +29,14 @@ const MyReservations = () => {
       </div>
       <div>
         <ul className="flex w-full flex-wrap justify-center">
-          {reservations.map((reservation) => (
+          {reservations?.map((reservation) => (
             <li
               className="border w-52 h-52 mx-4 my-4"
               key={reservations.indexOf(reservation)}
             >
               <div className="w-full h-full p-3">
                 <h3 className="text-center text-lg mt-4 text-gray-600 mb-3 font-semibold">
-                  {reservation.itemName}
+                  {reservation.motorcycle.title}
                 </h3>
                 <div className="font-medium mb-5">
                   <span className="block font-medium">{`City: ${reservation.city}`}</span>

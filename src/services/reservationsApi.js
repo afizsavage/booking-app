@@ -5,6 +5,9 @@ const reservationsApi = createApi({
   reducerPath: 'reservations',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://sheltered-tor-84017.herokuapp.com/api/v2' }),
   tagTypes: ['Reservation'],
+  auth: {
+    token: localStorage.getItem('token'),
+  },
   endpoints: (builder) => ({}),
 });
 

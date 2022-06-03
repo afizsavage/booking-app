@@ -44,11 +44,28 @@ const extendedReservationsSlice = reservationsApi.injectEndpoints({
       },
       // add providesTags when needed
     }),
+    getMyReservations: builder.query({
+      // query with bearer token
+      query: () => '/my_reservations', // change endpoint to scooters when database is updated
+      return: (responseData) => {
+        const loadedReservations = responseData;
+
+        return reservationsAdapter.upsertMany(
+          initialState,
+          loadedReservations,
+        ); /* normalize data
+        (entity object with a bunch of objects in it.
+          we use that ids array to look up the objects in the state) */
+      },
+      // add providesTags when needed
+    }),
   }),
 });
 
 // eslint-disable-next-line import/prefer-default-export
-export const { useGetAvailableScotersQuery, useGetReservationQuery } = extendedReservationsSlice;
+export const {
+  useGetAvailableScotersQuery, useGetReservationQuery, useGetMyReservationsQuery,
+} = extendedReservationsSlice;
 
 // returns the query result object
 export const selectAvailableScootersResult = extendedReservationsSlice
@@ -56,6 +73,9 @@ export const selectAvailableScootersResult = extendedReservationsSlice
 
 export const selectReservationResult = extendedReservationsSlice
   .endpoints.getReservation.select();
+
+export const selectMyReservationsResult = extendedReservationsSlice
+  .endpoints.getMyReservations.select();
 
 //  Create memoized selector
 export const selectAvailableScootersData = createSelector(
@@ -65,6 +85,11 @@ export const selectAvailableScootersData = createSelector(
 
 export const selectReservationData = createSelector(
   [selectReservationResult],
+  (result) => result.data, // Normalized state with ids and entities
+);
+
+export const selectMyReservationsData = createSelector(
+  [selectMyReservationsResult],
   (result) => result.data, // Normalized state with ids and entities
 );
 
@@ -79,5 +104,11 @@ export const {
   selectAll: selectAllReservation,
   selectById: selectReservationById,
 } = reservationsAdapter.getSelectors((state) => selectReservationData(state) ?? initialState);
+
+export const {
+  selectAll: selectAllMyReservations,
+  selectById: selectMyReservationById,
+  selectIds: selectMyReservationIds,
+} = reservationsAdapter.getSelectors((state) => selectMyReservationsData(state) ?? initialState);
 
 export default extendedReservationsSlice;
