@@ -19,7 +19,7 @@ Users can interact with the app by adding motorcycles and booking motorcycles.
 
 ## Live Demo
 
-<!-- [Live Project](https://open-pandemic.herokuapp.com/) -->
+[Live Project](https://fierce-stream-40862.herokuapp.com/)
 
 ## Getting Started
 
