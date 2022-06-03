@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import AddMotorcycle from './components/add-motorcycle';
 import Login from './components/auth/login';
 import SignUp from './components/auth/sign-up';
 import DeleteMotorcycle from './components/delete-motorcycle';
@@ -64,7 +63,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/reservations" element={<MyReservations />} />
-          <Route path="/add" element={<AddMotorcycle />} />
           <Route path="/delete" element={<DeleteMotorcycle />} />
         </Routes>
       </main>

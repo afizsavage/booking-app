@@ -22,9 +22,6 @@ export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
     year: Number(body.bike.year),
   };
 
-  console.log('I am restructured', restructured);
-  console.log('I am body', body);
-
   const options = {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
@@ -33,19 +30,18 @@ export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
   };
 
   const response = await axios(options);
-  console.log(response);
-  console.log(response.data);
   return response.data;
 });
 
 export const deleteBike = createAsyncThunk('bikes/deleteBike', async (id) => {
-  const res = await fetch(`https://sheltered-tor-84017.herokuapp.com/api/v2/scooters/${id}`, {
+  const options = {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-  });
-  const data = await res.join();
+    headers: { Authorization: `Bearer ${token}` },
+    url: `https://sheltered-tor-84017.herokuapp.com/api/v2/scooters/${id}`,
+  };
 
-  return Number(data);
+  const response = await axios(options);
+  return response.data;
 });
 
 export const bikesSlice = createSlice({

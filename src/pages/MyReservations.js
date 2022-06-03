@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const MyReservations = () => {
-    const [reservations, setReservations] = useState([]);
+  const [reservations, setReservations] = useState([]);
 
   const token = localStorage.getItem('token');
 
@@ -16,14 +16,12 @@ const MyReservations = () => {
       .then((res) => {
         // reservations = res.data;
         setReservations(res.data);
-        console.log(reservations);
       });
   }, []);
 
   const cancelReservation = (e) => {
     e.preventDefault();
     const [id] = e.target.id.split('-');
-    console.log('oooooooooh', id);
     axios
       .delete(`https://sheltered-tor-84017.herokuapp.com/api/v2/reservations/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -31,8 +29,7 @@ const MyReservations = () => {
           motorcycle_id: id,
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         window.location.reload();
       });
   };
