@@ -1,11 +1,8 @@
 /* eslint-disable no-use-before-define */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import qs from 'qs';
 
 const token = localStorage.getItem('token');
-
-// axios.defaults.baseURL = 'https://sheltered-tor-84017.herokuapp.com';
 
 export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
   const motor = await axios.get('https://sheltered-tor-84017.herokuapp.com/api/v2/scooters');
@@ -13,20 +10,19 @@ export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
 });
 
 export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
-  const restructured = {
-    description: body.bike.description,
-    color: body.bike.color,
-    title: body.bike.title,
-    image: body.bike.image[0].name,
-    model: body.bike.model,
-    year: Number(body.bike.year),
-  };
+  const formData = new FormData();
+  formData.append('description', body.bike.description);
+  formData.append('color', body.bike.color);
+  formData.append('title', body.bike.title);
+  formData.append('image', body.bike.image[0]);
+  formData.append('model', body.bike.model);
+  formData.append('year', Number(body.bike.year));
 
   const options = {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
     url: 'https://sheltered-tor-84017.herokuapp.com/api/v2/scooters/new',
-    data: qs.stringify(restructured),
+    data: formData,
   };
 
   const response = await axios(options);
