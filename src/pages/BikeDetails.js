@@ -4,10 +4,6 @@ import { BsFillGearFill, BsArrowRightCircle } from 'react-icons/bs';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-// const token = localStorage.getItem('token');
-// const config = {
-//   headers: { Authorization: `Bearer ${token}` },
-// };
 const BikeDetails = () => {
   const { bikeId } = useParams();
   const [bike, setBike] = useState({});

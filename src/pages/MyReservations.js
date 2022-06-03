@@ -6,15 +6,12 @@ const MyReservations = () => {
 
   const token = localStorage.getItem('token');
 
-  // let reservations;
-
   useEffect(() => {
     axios
       .get('https://sheltered-tor-84017.herokuapp.com/api/v2/my_reservations', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // reservations = res.data;
         setReservations(res.data);
       });
   }, []);
@@ -23,7 +20,6 @@ const MyReservations = () => {
     e.preventDefault();
     const [id] = e.target.id.split('-');
     const [mid] = e.target.parentNode.id.split('-');
-    // console.log('iiiiiiii', id);
     axios
       .delete(`https://sheltered-tor-84017.herokuapp.com/api/v2/reservations/${id}`, {
         headers: { Authorization: `Bearer ${token}` },

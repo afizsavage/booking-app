@@ -4,7 +4,6 @@ import reservationsApi from '../../services/reservationsApi';
 
 const reservationsAdapter = createEntityAdapter({
   selectId: (reservation) => reservation.id,
-  // sortComparer: (a, b) => a.id.localeCompare(b.id),
 });
 
 const initialState = reservationsAdapter.getInitialState();
