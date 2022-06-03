@@ -22,11 +22,13 @@ const MyReservations = () => {
   const cancelReservation = (e) => {
     e.preventDefault();
     const [id] = e.target.id.split('-');
+    const [mid] = e.target.parentNode.id.split('-');
+    console.log('iiiiiiii', id);
     axios
       .delete(`https://sheltered-tor-84017.herokuapp.com/api/v2/reservations/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
         data: {
-          motorcycle_id: id,
+          motorcycle_id: mid,
         },
       })
       .then(() => {
@@ -56,9 +58,11 @@ const MyReservations = () => {
                   <span className="block font-medium">{`City: ${reservation.city}`}</span>
                   <span className="block ont-medium">{`Date: ${reservation.date}`}</span>
                 </div>
-                <button className="w-full py-1 bg-amber-500" type="button" id={reservation.id} onClick={cancelReservation}>
-                  Cancel
-                </button>
+                <span id={reservation.motorcycle.id}>
+                  <button className="w-full py-1 bg-amber-500" type="button" id={reservation.id} onClick={cancelReservation}>
+                    Cancel
+                  </button>
+                </span>
               </div>
             </li>
           ))}
