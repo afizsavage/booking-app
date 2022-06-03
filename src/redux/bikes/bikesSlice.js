@@ -1,57 +1,45 @@
-/* eslint-disable no-use-before-define */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
-const token = localStorage.getItem('token');
+const initialState = {
+  bikes: [],
+  isLoading: false,
+};
 
 export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
-  const motor = await axios.get('https://sheltered-tor-84017.herokuapp.com/api/v2/scooters');
-  return motor.data;
+  const res = await fetch('');
+  const data = await res.join();
+  return data;
 });
 
 export const addBike = createAsyncThunk('bikes/addBike', async (body) => {
-  const formData = new FormData();
-  formData.append('description', body.bike.description);
-  formData.append('color', body.bike.color);
-  formData.append('title', body.bike.title);
-  formData.append('image', body.bike.image[0]);
-  formData.append('model', body.bike.model);
-  formData.append('year', Number(body.bike.year));
-
-  const options = {
+  const res = await fetch('', {
     method: 'POST',
-    headers: { Authorization: `Bearer ${token}` },
-    url: 'https://sheltered-tor-84017.herokuapp.com/api/v2/scooters/new',
-    data: formData,
-  };
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
 
-  const response = await axios(options);
-  return response.data;
+  return data;
 });
 
 export const deleteBike = createAsyncThunk('bikes/deleteBike', async (id) => {
-  const options = {
+  const res = await fetch(`${id}`, {
     method: 'DELETE',
-    headers: { Authorization: `Bearer ${token}` },
-    url: `https://sheltered-tor-84017.herokuapp.com/api/v2/scooters/${id}`,
-  };
+    headers: { 'Content-Type': 'application/json' },
+  });
+  const data = await res.join();
 
-  const response = await axios(options);
-  window.location.reload();
-  return response.data;
+  return Number(data);
 });
 
 export const bikesSlice = createSlice({
-  name: 'bikes',
-  initialState: {
-    bikes: [],
-  },
+  name: 'cars',
+  initialState,
   reducers: {
-    setBikes: (state, action) => ({
+    setBikes: (state, action) => {
       // eslint-disable-next-line no-param-reassign
-      // state.bikes = action.payload;
-      ...state, bikes: action.payload,
-    }),
+      state.bikes = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBikes.pending, (state) => {
@@ -69,7 +57,7 @@ export const bikesSlice = createSlice({
     });
     builder.addCase(deleteBike.fulfilled, (state, action) => {
       // eslint-disable-next-line no-param-reassign
-      state.bikes = state.bikes.filter((bike) => bike.id !== action.payload);
+      state.bikes = state.bikes.filter((car) => car.id !== action.payload);
     });
   },
 });

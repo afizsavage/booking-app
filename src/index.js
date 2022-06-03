@@ -5,9 +5,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import store from './redux/configureStore';
-import extendedReservationsSlice from './redux/reservations/reservationsSlice';
-
-store.dispatch(extendedReservationsSlice.endpoints.getAvailableScoters.initiate());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
