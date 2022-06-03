@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Booking App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Booking App is a single page web application that list motorcycles and allows users to make reservations for specific bikes in avalaible cities.
 
-## Available Scripts
+<!-- > ![screenshot](./src/images/app1.png) ![screenshot](./src/images/app2.png) -->
 
-In the project directory, you can run:
+Users can interact with the app by adding motorcycles and booking motorcycles.
 
-### `npm start`
+## Languages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- HTML/CSS
+- JavaScript
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+- Tailwindcss
+- React
+- Redux
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Live Demo
 
-### `npm run build`
+<!-- [Live Project](https://open-pandemic.herokuapp.com/) -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To get a local copy up and running follow these simple example steps.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Setup
 
-### `npm run eject`
+1.  Open a terminal, navigate to the directory that you would like to clone the repository into using commands like:
+    - `cd /pathname` to change your working directory.
+2.  Next, clone the remote repository and create a local copy on your machine using this command:
+    - `git clone https://github.com/afizsavage/booking-app`
+3.  Now you can see the contents of the remote repository on your machine by moving into the newly cloned directory:
+    - `booking-app`
+    - `ls -la`
+4.  run `npm install` on the command line to download all dependency packages.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Run
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. run `npm run build` Builds the app for production to the `build` folder.\.
+2. run `npm start` to start the application in production mode.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Video Presentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- [Video](https://drive.google.com/file/d/1aXrPo23ARoJhqoFP0w8ypQ57WKr0sRs4/view?usp=sharing) -->
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👤 **Afiz Savage**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- GitHub: [@afizsavage](https://github.com/afizsavage)
+- Twitter: [@fizzo_geek](https://twitter.com/fizzo_geek)
 
-### Code Splitting
+👤 **Victor Chukwuemeka**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- GitHub: [@hukwuemeka1234](https://github.com/chukwuemeka1234)
+- Twitter: [@avc_victor](https://twitter.com/avc_victor)
 
-### Analyzing the Bundle Size
+👤 **Ricky Mormor**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- GitHub: [@cwaku](https://github.com/cwaku)
+- Twitter: [@rickymormor](https://twitter.com/rickymormor)
 
-### Making a Progressive Web App
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [Murat Korkmaz](https://www.behance.net/muratk) for this wonderfull design template.
 
-### Advanced Configuration
+## Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Give a ⭐️ if you like this project!
