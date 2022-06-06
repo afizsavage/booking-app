@@ -84,6 +84,11 @@ const Reserve = () => {
 
     getFormData();
     addNewReservation(getFormData());
+    document.getElementById('duration').value = '';
+    document.getElementById('price').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('city').value = '';
+    document.getElementById('name').value = '';
   };
 
   if (isLoadingReservation) {
