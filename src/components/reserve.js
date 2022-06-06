@@ -18,7 +18,9 @@ const Reserve = () => {
 
   useEffect(() => {
   }, [scooterId]);
-  const { isLoading, isSuccess, isError } = useGetAvailableScotersQuery();
+  const {
+    data: allScooters, isLoading, isSuccess, isError,
+  } = useGetAvailableScotersQuery();
   const {
     data: selectedScooter,
     isLoading: isLoadingReservation,
@@ -55,12 +57,28 @@ const Reserve = () => {
     content = <p>Error!</p>;
   }
   if (isSuccess) {
-    content = orderedScootersIds.map((id) => (
-      <p onClick={getId} key={id} id={id}>
-        {id}
-      </p>
-    ));
+    console.log('diiiiiiiij', allScooters);
+    // const [ids, entities] = allScooters;
+    const ids = allScooters.ids;
+    const entities = allScooters.entities;
+    content = ids.map((id) => {
+      const scooter = entities[id];
+      return (
+        <option key={id} id={id} value={id}>
+          {scooter.title}
+        </option>
+      );
+    });
   }
+
+  const getScooter = (e) => {
+    e.preventDefault();
+    const ent = allScooters.entities;
+    console.log('entttttttttttttttttttt', ent);
+    console.log(e.target.value);
+    chosenScooter = allScooters.entities[e.target.value];
+    console.log('chosenScooterrrrrrrrr', chosenScooter);
+  };
 
   const getFormData = () => {
     const duration = document.getElementById('duration').value;
@@ -212,7 +230,11 @@ const Reserve = () => {
                 ) : (
                   <div className="reserve-scooter-list">
                     <h2>Select scooter</h2>
-                    {content}
+                    <div className="reserve-scooter-list-content">
+                      <select onChange={getScooter}>
+                        {content}
+                      </select>
+                    </div>
                   </div>
                 )}
                 <button type="button" className="reserve-action-button" onClick={onSubmit}>
