@@ -24,7 +24,7 @@ const BikesList = () => {
   }
 
   return (
-    <section className="w-full">
+    <section className="w-full my-10">
       <h2 className="font-bold text-3xl text-center mb-10">List of scooters</h2>
       {isLoading && <p>Loading...</p>}
       <table className="table-auto w-4/5 max-w-xl mx-auto text-sm md:text-lg">
@@ -42,7 +42,7 @@ const BikesList = () => {
               <td className="px-2 py-4">{scooter.year}</td>
               <td className="px-2 py-4">{scooter.model}</td>
               <td className="px-2 py-4" id={scooter.id}>
-                <PrimaryButton btnType="button" is onClick={deleteScooter}>
+                <PrimaryButton btnType="button" onClick={deleteScooter}>
                   Delete
                 </PrimaryButton>
               </td>

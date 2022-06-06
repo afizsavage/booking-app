@@ -5,7 +5,9 @@ import axios from 'axios';
 const token = localStorage.getItem('token');
 
 export const fetchBikes = createAsyncThunk('bikes/fetchBikes', async () => {
-  const motor = await axios.get('https://sheltered-tor-84017.herokuapp.com/api/v2/scooters');
+  const motor = await axios.get(
+    'https://sheltered-tor-84017.herokuapp.com/api/v2/scooters',
+  );
   return motor.data;
 });
 
@@ -50,7 +52,8 @@ export const bikesSlice = createSlice({
     setBikes: (state, action) => ({
       // eslint-disable-next-line no-param-reassign
       // state.bikes = action.payload;
-      ...state, bikes: action.payload,
+      ...state,
+      bikes: action.payload,
     }),
   },
   extraReducers: (builder) => {
