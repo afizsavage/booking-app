@@ -15,7 +15,8 @@ const links = [
   { name: 'Scooter', path: '/' },
   { name: 'Reserve', path: '/reserve' },
   { name: 'My Reservations', path: '/reservations' },
-  { name: 'Add Scooter', path: '/manage-page' },
+  { name: 'Add Scooter', path: '/add' },
+  { name: 'Delete Scooter', path: '/delete' },
 ];
 
 const socialIcons = [

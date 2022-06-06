@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import BikesList from '../components/BikesList';
 import FormError from '../components/FormError';
 import PrimaryButton from '../components/PrimaryButton';
 import { addBike } from '../redux/bikes/bikesSlice';
@@ -28,9 +27,9 @@ const ManageBikes = () => {
   };
 
   return (
-    <section className="w-full md:w-4/5 pt-20 md:py-20 overflow-y-auto h-screen">
-      <h1 className="font-bold text-2xl md:text-5xl text-center uppercase mb-10">
-        Manage Scooters
+    <section className="w-full md:w-4/5 pt-20 md:py-10 overflow-y-auto h-screen">
+      <h1 className="font-bold text-center text-xl md:text-3xl md:mb-2 uppercase text-gray-700">
+        Add Scooters
       </h1>
       <p
         className={`text-green-600 text-center my-2 opacity-0 transition-opacity ${
@@ -90,7 +89,6 @@ const ManageBikes = () => {
         {errors.description && <FormError>Must fill out this field</FormError>}
         <PrimaryButton btnType="submit">add scooter</PrimaryButton>
       </form>
-      <BikesList />
     </section>
   );
 };

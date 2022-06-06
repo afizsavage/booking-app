@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import BikeDetails from './pages/BikeDetails';
 import ManageBikes from './pages/ManageBikes';
 import { logUserIn } from './redux/users/userSlice';
+import DeleteBikes from './pages/Delete';
 
 function App() {
   const location = useLocation();
@@ -55,11 +56,13 @@ function App() {
           <Route path="/bikes/:bikeId" element={<BikeDetails />} />
           <Route path="/reserve/:id" element={<Reserve />} />
           <Route path="/reservations" element={<MyReservations />} />
-          <Route path="/manage-page" element={<ManageBikes />} />
+          <Route path="/add" element={<ManageBikes />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/reservations" element={<MyReservations />} />
+          <Route path="/delete" element={<DeleteBikes />} />
+
         </Routes>
       </main>
     </div>

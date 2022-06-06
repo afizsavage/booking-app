@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBikes, deleteBike } from '../redux/bikes/bikesSlice';
+import { Loading } from './Carousel';
 import PrimaryButton from './PrimaryButton';
 
 const BikesList = () => {
@@ -18,8 +19,12 @@ const BikesList = () => {
     dispatch(deleteBike(id));
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <section>
+    <section className="w-full">
       <h2 className="font-bold text-3xl text-center mb-10">List of scooters</h2>
       {isLoading && <p>Loading...</p>}
       <table className="table-auto w-4/5 max-w-xl mx-auto text-sm md:text-lg">
@@ -36,7 +41,11 @@ const BikesList = () => {
             <tr key={scooter.id}>
               <td className="px-2 py-4">{scooter.year}</td>
               <td className="px-2 py-4">{scooter.model}</td>
-              <td className="px-2 py-4" id={scooter.id}><PrimaryButton btnType="button" is onClick={deleteScooter}>Delete</PrimaryButton></td>
+              <td className="px-2 py-4" id={scooter.id}>
+                <PrimaryButton btnType="button" is onClick={deleteScooter}>
+                  Delete
+                </PrimaryButton>
+              </td>
             </tr>
           ))}
         </tbody>
