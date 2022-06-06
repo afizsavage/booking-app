@@ -14,10 +14,11 @@ import addNewReservation from '../services/addReservationApi';
 
 const Reserve = () => {
   const { id } = useParams();
-  const [scooterId, setScooterId] = useState('');
+  let clickedScooterId;
+  // const [scooterId, setScooterId] = useState();
 
-  useEffect(() => {
-  }, [scooterId]);
+  // useEffect(() => {
+  // }, [scooterId]);
   const {
     data: allScooters, isLoading, isSuccess, isError,
   } = useGetAvailableScotersQuery();
@@ -30,10 +31,10 @@ const Reserve = () => {
 
   const orderedScootersIds = useSelector(selectAvailableScooterIds);
 
-  const getId = (e) => {
-    e.preventDefault();
-    setScooterId(e.target.id);
-  };
+  // const getId = (e) => {
+  //   e.preventDefault();
+  //   setScooterId(e.target.id);
+  // };
 
   let chosenScooter;
 
@@ -76,8 +77,9 @@ const Reserve = () => {
     const ent = allScooters.entities;
     console.log('entttttttttttttttttttt', ent);
     console.log(e.target.value);
-    chosenScooter = allScooters.entities[e.target.value];
-    console.log('chosenScooterrrrrrrrr', chosenScooter);
+    clickedScooterId = allScooters.entities[e.target.value].id;
+    // setScooterId(clickedScooter.id);
+    console.log('chosenScooterrrrrrrrr', clickedScooterId);
   };
 
   const getFormData = () => {
@@ -85,13 +87,16 @@ const Reserve = () => {
     const price = document.getElementById('price').value;
     const date = document.getElementById('date').value;
     const city = document.getElementById('city').value;
+    const motorcycleId = clickedScooterId || chosenScooter.id;
+
+    console.log('ScoooooterIIIDDDD', motorcycleId);
 
     return {
       duration: Number(duration),
       price: Number(price),
       date,
       city,
-      motorcycle_id: chosenScooter.id,
+      motorcycle_id: motorcycleId,
     };
   };
 
