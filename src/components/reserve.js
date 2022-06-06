@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
@@ -15,10 +15,6 @@ import addNewReservation from '../services/addReservationApi';
 const Reserve = () => {
   const { id } = useParams();
   let clickedScooterId;
-  // const [scooterId, setScooterId] = useState();
-
-  // useEffect(() => {
-  // }, [scooterId]);
   const {
     data: allScooters, isLoading, isSuccess, isError,
   } = useGetAvailableScotersQuery();
@@ -28,13 +24,6 @@ const Reserve = () => {
     isSuccess: isSuccessReservation,
     isError: isErrorReservation,
   } = useGetReservationQuery(id);
-
-  const orderedScootersIds = useSelector(selectAvailableScooterIds);
-
-  // const getId = (e) => {
-  //   e.preventDefault();
-  //   setScooterId(e.target.id);
-  // };
 
   let chosenScooter;
 
@@ -58,10 +47,9 @@ const Reserve = () => {
     content = <p>Error!</p>;
   }
   if (isSuccess) {
-    console.log('diiiiiiiij', allScooters);
-    // const [ids, entities] = allScooters;
-    const ids = allScooters.ids;
-    const entities = allScooters.entities;
+    const { ids, entities } = allScooters;
+    // const ids = allScooters.ids;
+    // const entities = allScooters.entities;
     content = ids.map((id) => {
       const scooter = entities[id];
       return (
@@ -77,6 +65,7 @@ const Reserve = () => {
     const ent = allScooters.entities;
     console.log('entttttttttttttttttttt', ent);
     console.log(e.target.value);
+    // const clickedScooter = allScooters.entities[e.target.value];
     clickedScooterId = allScooters.entities[e.target.value].id;
     // setScooterId(clickedScooter.id);
     console.log('chosenScooterrrrrrrrr', clickedScooterId);
@@ -234,16 +223,17 @@ const Reserve = () => {
                   </div>
                 ) : (
                   <div className="reserve-scooter-list">
-                    <h2>Select scooter</h2>
+                    {/* <h2>Select scooter</h2> */}
                     <div className="reserve-scooter-list-content">
                       <select onChange={getScooter}>
+                        <option value="">Select scooter</option>
                         {content}
                       </select>
                     </div>
                   </div>
                 )}
                 <button type="button" className="reserve-action-button" onClick={onSubmit}>
-                  {chosenScooter.available ? 'Reserve scooter' : 'Scooter reserved'}
+                  Reserve
                 </button>
               </div>
             </div>
