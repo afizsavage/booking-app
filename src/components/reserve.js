@@ -2,10 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
-  selectAvailableScooterIds,
   useGetAvailableScotersQuery,
   useGetReservationQuery,
 } from '../redux/reservations/reservationsSlice';
@@ -62,13 +60,7 @@ const Reserve = () => {
 
   const getScooter = (e) => {
     e.preventDefault();
-    const ent = allScooters.entities;
-    console.log('entttttttttttttttttttt', ent);
-    console.log(e.target.value);
-    // const clickedScooter = allScooters.entities[e.target.value];
     clickedScooterId = allScooters.entities[e.target.value].id;
-    // setScooterId(clickedScooter.id);
-    console.log('chosenScooterrrrrrrrr', clickedScooterId);
   };
 
   const getFormData = () => {
@@ -77,8 +69,6 @@ const Reserve = () => {
     const date = document.getElementById('date').value;
     const city = document.getElementById('city').value;
     const motorcycleId = clickedScooterId || chosenScooter.id;
-
-    console.log('ScoooooterIIIDDDD', motorcycleId);
 
     return {
       duration: Number(duration),
