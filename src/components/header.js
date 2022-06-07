@@ -41,7 +41,8 @@ const Header = ({ setRenderAside }) => {
         {' '}
         <FcMenu className="text-xl text-gray-700" />
       </button>
-      <span className="block">Logo</span>
+      <img className="w-auto h-9" alt="logo" src="/mobile-logo.png" />
+
       <div className="">
         {userState.isLoggedIn ? (
           <button
