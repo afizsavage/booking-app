@@ -70,7 +70,7 @@ const SideBar = ({ renderAside, setRenderAside }) => {
     <aside
       className={
         renderAside
-          ? 'top-0 absolute bg-slate-100 lg:relative flex flex-col z-50 justify-between h-screen w-full lg:w-1/6 border-r-2 py-6'
+          ? 'top-0 absolute bg-slate-100 lg:relative flex flex-col z-50 justify-between h-screen w-full lg:w-1/6 border-r-2 pt-0 pb-6'
           : 'hidden'
       }
     >
@@ -82,9 +82,9 @@ const SideBar = ({ renderAside, setRenderAside }) => {
       <div>
         {' '}
         <div className=" hidden lg:flex justify-center items-center">
-          <span className="h-28 block">Logo</span>
+          <img className="w-auto h-44" alt="logo" src="/logo.png" />
         </div>
-        <ul className="pl-5 pt-9 lg:pt-0">
+        <ul className="pl-5 pt-12 lg:pt-0">
           {links.map((link) => (
             <NavItem
               key={links.indexOf(link)}
