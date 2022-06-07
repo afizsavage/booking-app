@@ -16,6 +16,26 @@ a.active {
   @apply h-16 top-1/4 w-24 bg-amber-500 !important;
 }
 
+.blue {
+  @apply bg-blue-200;
+}
+
+.red {
+  @apply bg-red-200;
+}
+
+.green {
+  @apply bg-green-200;
+}
+
+.black {
+  @apply bg-gray-200;
+}
+
+.yellow {
+  @apply bg-yellow-200;
+}
+
 .control-arrow:first-of-type {
   @apply rounded-r-full;
 }

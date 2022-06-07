@@ -39,7 +39,6 @@ export const deleteBike = createAsyncThunk('bikes/deleteBike', async (id) => {
   };
 
   const response = await axios(options);
-  window.location.reload();
   return response.data;
 });
 
